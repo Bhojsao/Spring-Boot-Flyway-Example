@@ -1,0 +1,24 @@
+server:
+  port: 8011
+  contextPath: /SpringBootFlyway
+
+spring: 
+  datasource:
+    initialize: true
+    driverClassName: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: FLYWAY_DB
+    password: 123456
+  
+  jpa:
+    hibernate :
+     ddl-auto: update
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    
+flyway:
+   enabled: true
+   url: jdbc:oracle:thin:@localhost:1521:xe
+   baselineOnMigrate : true       
+  
+
+  
