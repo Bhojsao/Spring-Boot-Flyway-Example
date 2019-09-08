@@ -8,7 +8,7 @@ spring:
     driverClassName: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@localhost:1521:xe
     username: FLYWAY_DB
-    password: 123456
+    password: Db12345
   
   jpa:
     hibernate :
