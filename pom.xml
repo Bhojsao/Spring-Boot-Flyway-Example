@@ -1,26 +1,22 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>com.bhoj.springboot.flyway</groupId>
 	<artifactId>spring-boot-flyway</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
-
 	<name>Spring-Boot-Flyway</name>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.0.RELEASE</version>
 	</parent>
-
 	<properties>
 		<java.version>1.8</java.version>
-		<!-- Additionally, Please make sure that your JAVA_HOME is pointing to 
-			1.8 when building on commandline -->
+		<!-- Additionally, Please make sure that your JAVA_HOME is pointing to 1.8 when building on commandline -->
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -32,7 +28,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
 		<!-- Spring data JPA, default tomcat pool, exclude it -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -44,27 +43,23 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
 			<version>4.1.2</version>
 		</dependency>
-
 		<!-- Oracle DataBase support -->
 		<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>11.2.0.3</version>
 		</dependency>
-
 		<!-- Common DBCP2 connection pool -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.1.1</version>
 		</dependency>
-
 		<!-- HikariCP connection pool -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
@@ -78,13 +73,21 @@
 			<version>1.14.8</version>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.SR6</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
-			<plugin><!-- Include if you want to make an executable jar[FAT JAR which 
-					includes all dependencies along with sprinboot loader] that you can run on 
-					commandline using java -jar NAME -->
+			<plugin><!-- Include if you want to make an executable jar[FAT JAR which includes all dependencies along with sprinboot loader] that you can run on commandline using java -jar NAME -->
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
