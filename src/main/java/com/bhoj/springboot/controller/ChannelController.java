@@ -20,13 +20,13 @@ import com.bhoj.springboot.repository.ChannelRepository;
  *
  */
 @RestController
+@CrossOrigin
 public class ChannelController {
 
 	@Autowired
 	private ChannelRepository channelRepository;
 
 	@RequestMapping(value = "/channel/getAllChannel", method = RequestMethod.GET)
-	@CrossOrigin
 	public ResponseEntity<?> getAllChannel() {
 		List<Channel> Channels = channelRepository.findAll();
 		return new ResponseEntity<List<Channel>>(Channels, HttpStatus.OK);
