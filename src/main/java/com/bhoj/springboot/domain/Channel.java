@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 /**
@@ -24,12 +26,15 @@ public class Channel implements Serializable{
 	
 	@Id
 	@Column(name = "CHANNEL_ID", unique = true, nullable = false)
+	@JsonProperty
 	private String channelId;
 
 	@Column(name = "CHANNEL_NAME", length = 50)
+	@JsonProperty
 	private String channelName;
 
 	@Column(name = "CHANNEL_DESC")
+	@JsonProperty
 	private String channelDesc;
 
 }
